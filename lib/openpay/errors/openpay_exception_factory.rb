@@ -34,8 +34,8 @@ class OpenpayExceptionFactory
             raise oe
 
       when  RestClient::Exception , RestClient::InternalServerError
+            LOG.warn exception
             oe=OpenpayException.new exception.http_body
-            LOG.warn exception.http_body
             @errors=true
             raise oe
       else
